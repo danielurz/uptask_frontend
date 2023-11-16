@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#Public {
+    background-color: #e5e4e8;
+    min-height: 100vh;
+    height: 100%;
+    padding: 60px 0;
+}
+
+$blue: #1961ad;
+$darkblue: #144f8f;
+
+#Login, #Registro, #OlvidePassword, #NuevoPassword {
+    width: 600px;
+    margin: auto;
+    .hero {
+        p {
+            text-transform:capitalize;
+            font-size: 4em;
+            font-weight: bold;
+            line-height: 1em;
+            span {
+                color: $blue;
+            }
+        }
+    }
+    form {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        margin-top: 30px;
+        .field {
+            margin-bottom: 20px;
+            label {
+                text-transform: uppercase;
+                font-weight: bold;
+                display: block;
+                margin-bottom: 10px;
+                font-size: 1.2em;
+
+            } 
+            input {
+                display: block;
+                padding: 15px;
+                border-radius: 10px;
+                background-color: #eaeaea;
+                width: 100%;
+                border: none;
+                font-size: 1em;
+            }
+        }
+        .smtBtn {
+            padding: 12px;
+            color: white;
+            text-transform: uppercase;
+            border-radius: 5px;
+            border: none;
+            background-color: $darkblue;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    }
+    nav {
+        margin-top: 20px;
+        & > * {
+            display: block;
+            text-transform: capitalize;
+            font-size: 1.1em;
+            text-align: right;
+            margin-bottom: 5px;
+            color: $blue;
+        }
+    }
+}
