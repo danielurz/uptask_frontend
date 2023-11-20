@@ -129,7 +129,7 @@ function Colaboradores({showCol,projectId}) {
 
 
   return (
-    <div id="ColBox" className={showCol ? "showCol" : ""}>
+    <div id="CollabBox" className={showCol ? "showCol" : ""}>
         <form onSubmit={handleForm}>
           <input type="text" className="txtInput" name="email" 
             placeholder="Search collabs..."  />

@@ -18,7 +18,7 @@ function Proyectos() {
   return (
     <div id="Proyectos">
       {projects.length === 0 ? (
-        <h1 className="legend" style={{ textAlign: "center" }}>No projects yet</h1>
+        <h1 className="legend" style={{textAlign:"center"}}>No projects yet</h1>
       ) : (
         <>
           <h1 className="legend">Projects</h1>

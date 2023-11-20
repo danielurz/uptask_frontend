@@ -1,0 +1,209 @@
+// Responsive Media Queries for public panel
+@media (max-width: 768px) {
+    #Login, #Registro, #OlvidePassword, #NuevoPassword {
+        width: 90%;
+        .hero p {
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #Login, #Registro, #OlvidePassword, #NuevoPassword {
+        .hero p {
+            font-size: 3.5em;
+        }
+        form {
+            padding: 20px;
+            // font-size: 0.9em;
+        }
+        .smtBtn {
+            font-size: 1em;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #Login, #Registro, #OlvidePassword, #NuevoPassword {
+        .hero p {
+            font-size: 3em;
+        }
+        form {
+            // padding: 15px;
+            // font-size: 0.8em;
+            .field {
+                label {
+                    font-size: 1.1em;
+                }
+                input {
+                    padding: 12px;
+                }
+            }
+            .smtBtn {
+                font-size: 1em;
+            }
+        }
+    }
+}
+
+
+// Responsive Media Queries for private panel
+
+@media (max-width: 1024px) {
+    #Main {
+        display: block;
+        #Sidebar {
+            width: auto;
+            .greeting p {
+                display: none;
+            }
+        }
+        #AdminOutlet {
+            width: auto;
+            #Proyectos {
+                .legend {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    #NuevoProyecto {
+        .hero {
+            text-align: center;
+        }
+        form {
+            width: auto;
+        }
+    }
+    #Proyectos {
+        .proyecto {
+            position: relative;
+            padding: 30px 20px !important;
+            .info {
+                display: block !important;
+                p:first-child {
+                    margin-bottom: 2px;
+                }
+                legend {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    border-radius: 0 10px !important;
+                    padding: 4px 10px !important;
+                    margin: 0 !important;
+                    font-size: 0.9em;
+                    letter-spacing: .9px;
+                }
+            }
+        }
+    }
+
+    #ProjectView {
+        .hero {
+            display: block !important;
+            height: auto !important;
+            h1 {
+                text-align: center;
+            }
+            .actions {
+                display: flex;
+                gap: 20px;
+                justify-content: end;
+            }
+        }
+        .newTask {
+            font-size: 1.1em !important;
+        }
+    }
+
+    #Tasks {
+        .task {
+            display: block;
+            .actions {
+                justify-content: end;
+            }
+        }
+    }
+
+    #ModalEditProject, #ModalEditTask {
+        width: 80%;
+    }
+}
+
+@media (max-width: 460px) {
+    #Proyectos {
+        .proyecto {
+            display: block !important;
+            .info {
+                margin-bottom: 5px;
+            }
+            .action > * {
+                display: block;
+                text-align: right !important;
+            }
+        }
+    }
+
+    #ProjectView {
+        .hero {
+            margin-bottom: 10px;
+            h1 {
+                font-size: 2.2em;
+            }
+            .actions {
+                justify-content: center;
+                margin-right: 0 !important;
+            }
+        }
+    }
+
+    #Tasks {
+        .task {
+            .info {
+                margin-bottom: 20px;
+            }
+            .actions {
+                flex-direction: column;
+            }
+        }
+    }
+
+    #ModalEditProject, #ModalEditTask {
+        width: 95%;
+    }
+}
+
+@media (max-width: 380px) {
+    #CollabBox {
+        width: 95%;
+        margin: auto;
+    }
+
+    .showCol {
+        right: 5px !important;
+    }
+
+    #Header {
+        user-select: none;
+        .container {
+            .box {
+                position: relative;
+                display: block;
+                .menuIcon {
+                    display: block;
+                    position: absolute;
+                    right: 5px;
+                    top: 5px;
+                    font-size: 2em;
+                }
+                .actions {
+                    justify-content: center;
+                    display: none;
+                }
+            }
+        }
+    }
+}

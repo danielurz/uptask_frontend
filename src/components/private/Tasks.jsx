@@ -40,7 +40,7 @@ function Tasks({projectId,isCreator}) {
                     <h2 style={{textAlign: "center", marginTop: "50px"}}>There are no tasks yet</h2>
                 </>
             ) : (
-                <ul id="Task">
+                <ul id="Tasks">
                     {tasks.map(task => {
                         return (
                             <Task

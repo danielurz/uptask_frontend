@@ -57,7 +57,7 @@ function Task({task,projectId,isCreator}) {
     }
 
   return (
-    <li>
+    <li className="task">
         <div className="info">
             <p className="bold">{tarea}</p>    
             <p className="light">{descripcion}</p>    

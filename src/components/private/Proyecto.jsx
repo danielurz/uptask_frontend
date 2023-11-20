@@ -8,7 +8,7 @@ function Proyecto({project}) {
   const isCreator = creadorId === userData._id
 
   return (
-    <li>
+    <li className="proyecto">
       <div className="info">
         <p>{proyecto}</p>
         <p>{cliente}</p>

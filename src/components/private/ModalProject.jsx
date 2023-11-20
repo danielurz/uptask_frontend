@@ -60,7 +60,7 @@ function ModalProject({project,userId,projects}) {
     }
 
   return (
-    <form onSubmit={handleForm} className="modalEdit">
+    <form onSubmit={handleForm} id="ModalEditProject">
             <div className="field">
                 <label>Project Name</label>
                 <input type="text" name="proyecto" onChange={handleChange} 

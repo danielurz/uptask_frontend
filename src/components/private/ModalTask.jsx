@@ -84,7 +84,7 @@ function ModalTask() {
 
 
   return (
-    <form onSubmit={handleForm} className="modalEditTask">
+    <form onSubmit={handleForm} id="ModalEditTask">
         <div className="field">
           <label>Task Name</label>
           <input type="text" name="tarea" 
