@@ -84,3 +84,51 @@ $darkblue: #144f8f;
         }
     }
 }
+
+// Responsive Media Queries
+@media (max-width: 768px) {
+    #Login, #Registro, #OlvidePassword, #NuevoPassword {
+        width: 90%;
+        .hero p {
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #Login, #Registro, #OlvidePassword, #NuevoPassword {
+        .hero p {
+            font-size: 3.5em;
+        }
+        form {
+            padding: 20px;
+            // font-size: 0.9em;
+        }
+        .smtBtn {
+            font-size: 1em;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #Login, #Registro, #OlvidePassword, #NuevoPassword {
+        .hero p {
+            font-size: 3em;
+        }
+        form {
+            // padding: 15px;
+            // font-size: 0.8em;
+            .field {
+                label {
+                    font-size: 1.1em;
+                }
+                input {
+                    padding: 12px;
+                }
+            }
+            .smtBtn {
+                font-size: 1em;
+            }
+        }
+    }
+}

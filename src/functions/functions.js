@@ -16,8 +16,8 @@ export const autenticacion = async dispatch => {
             }
         }).then(res => res.json())
 
-        if (response.error) return console.log(response.error)
-        if (response.serverError) return console.log(`Server Error: ${response.serverError}`)
+        if (response?.error) return console.log(response.error)
+        if (response?.serverError) return console.log(`Server Error: ${response.serverError}`)
 
         dispatch(updateUserData(response))
         if (response?._id) fetchingProjects(dispatch,response._id)
