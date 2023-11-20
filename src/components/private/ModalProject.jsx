@@ -13,7 +13,7 @@ function ModalProject({project,userId,projects}) {
 
         const VALUES = Object.values(project)
 
-        if (VALUES.includes("")) return toast.error("Completa todos los campos")
+        if (VALUES.includes("")) return toast.error("Complete all fields")
 
         const {_id,creadorId,colaboradores,createdAt,updatedAt, ...updatedProject} = project
 
@@ -26,7 +26,7 @@ function ModalProject({project,userId,projects}) {
             }
         }
 
-        if (hasntMadeChanges) return toast.error("No has hecho ningun cambio")
+        if (hasntMadeChanges) return toast.error("You haven't made any changes")
         
         try {
             const loadingToast = toast.loading("editing project...")
@@ -61,31 +61,31 @@ function ModalProject({project,userId,projects}) {
 
   return (
     <form onSubmit={handleForm} className="modalEdit">
-        <div className="field">
-          <label>Nombre proyecto</label>
-          <input type="text" name="proyecto" onChange={handleChange} 
-            value={project?.proyecto ?? ""} />
-        </div>
-        <div className="field">
-          <label>Descripcion</label>
-          <textarea name="descripcion" onChange={handleChange} 
-            value={project?.descripcion ?? ""} />
-        </div>
-        <div className="field">
-          <label>Fecha entrega</label>
-          <input type="date" name="fecha" onChange={handleChange} 
-            value={project?.fecha ?? ""} />
-        </div>
-        <div className="field">
-          <label>Nombre cliente</label>
-          <input type="text" name="cliente" onChange={handleChange} 
-            value={project?.cliente ?? ""} />
-        </div>
-        <input type="submit" value="Editar proyecto" className="smtBtn" />
-        <FaWindowClose 
-            onClick={() => dispatch(resetProject())}
-            className="closeIcon"/>
-      </form>
+            <div className="field">
+                <label>Project Name</label>
+                <input type="text" name="proyecto" onChange={handleChange} 
+                    value={project?.proyecto ?? ""} />
+            </div>
+            <div className="field">
+                <label>Description</label>
+                <textarea name="descripcion" onChange={handleChange} 
+                    value={project?.descripcion ?? ""} />
+            </div>
+            <div className="field">
+                <label>Delivery Date</label>
+                <input type="date" name="fecha" onChange={handleChange} 
+                    value={project?.fecha ?? ""} />
+            </div>
+            <div className="field">
+                <label>Client Name</label>
+                <input type="text" name="cliente" onChange={handleChange} 
+                    value={project?.cliente ?? ""} />
+            </div>
+            <input type="submit" value="Edit Project" className="smtBtn" />
+            <FaWindowClose 
+                    onClick={() => dispatch(resetProject())}
+                    className="closeIcon"/>
+        </form>
   )
 }
 

@@ -47,8 +47,8 @@ function Colaboradores({showCol,projectId}) {
 
     const email = formdata.get("email")
 
+    const loadingToast = toast.loading("Searching...")
     try {
-      const loadingToast = toast.loading("Searching...")
       
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/project/colaborador/${email}/${userData._id}`
       const response = await fetch(url).then(data => data.json())
@@ -56,8 +56,6 @@ function Colaboradores({showCol,projectId}) {
       if (response?.error) return toast.error(response.error)
       if (response?.serverError) return toast.error(`Server Error: ${response.serverError}`)
       
-      toast.dismiss(loadingToast)
-
       setColaborador(prev => {
         let obj = {}
         for (let key in response) {
@@ -69,14 +67,16 @@ function Colaboradores({showCol,projectId}) {
 
     } catch (error) {
       toast.error(`Client Error: ${error.message}`)
+    } finally {
+      toast.dismiss(loadingToast)
     }
   }
 
 
 
   const addColaborador = async () => {
+    const loadingToast = toast.loading("adding collaborator...")
     try {
-      const loadingToast = toast.loading("adding collaborator...")
       
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/project/colaborador/${projectId}/${userData._id}`
       const response = await fetch(url, {
@@ -87,8 +87,6 @@ function Colaboradores({showCol,projectId}) {
         }
       }).then(data => data.json())
       
-      toast.dismiss(loadingToast)
-
       if (response?.error) return toast.error(response.error)
       if (response?.serverError) return toast.error(`Server Error: ${response.serverError}`)
 
@@ -98,18 +96,20 @@ function Colaboradores({showCol,projectId}) {
 
     } catch (error) {
       toast.error(`Client Error: ${error.message}`)
+    } finally {
+      toast.dismiss(loadingToast)
     }
   }
 
   
 
   const handleDeleteCol = async idCol => {
-    const confirmation = confirm("Deseas eliminar este colaborador?")
+    const confirmation = confirm("Do you want to delete this collaborator?")
     if (!confirmation) return
-    
+
+    const loadingToast = toast.loading("deleting collaborator...")
+        
     try {
-      const loadingToast = toast.loading("deleting collaborator...")
-      
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/project/colaborador/${idCol}/${projectId}`
       const response = await fetch(url,{method: "DELETE"}).then(data => data.json())
 
@@ -117,11 +117,12 @@ function Colaboradores({showCol,projectId}) {
 
       if (response?.serverError) return toast.error(`Server Error: ${response.serverError}`)
 
-      toast.success(response.success)
       setColaboradores(prev => prev.filter(({id}) => id !== idCol))
 
     } catch (error) {
       toast.error(`Client Error: ${error.message}`)
+    } finally {
+      toast.dismiss(loadingToast)
     }
   }
   
@@ -131,7 +132,7 @@ function Colaboradores({showCol,projectId}) {
     <div id="ColBox" className={showCol ? "showCol" : ""}>
         <form onSubmit={handleForm}>
           <input type="text" className="txtInput" name="email" 
-            placeholder="Busca colaborador..."  />
+            placeholder="Search collabs..."  />
           <button type="submit" className="smtBtn">
           <FaSearch/>
           </button>
@@ -139,7 +140,7 @@ function Colaboradores({showCol,projectId}) {
         <div className="box">
           {!colaborador?.id ? (
               <>
-                <h3>{colaboradores.length > 0 ? "Colaboradores" : "Aun no hay colaboradores"}</h3>
+                <h3>{colaboradores.length > 0 ? "Colaborators" : "No collaborators yet"}</h3>
                 {colaboradores.length > 0 && (
                   <ul id="ListadoCol">
                     {colaboradores.map(col => {

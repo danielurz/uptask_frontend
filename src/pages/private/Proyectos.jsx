@@ -6,7 +6,7 @@ import toast from "react-hot-toast"
 
 function Proyectos() {
 
-  const {projects, chargingProjects} = useSelector(state => state.project)
+  const { projects, chargingProjects } = useSelector(state => state.project)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -18,10 +18,10 @@ function Proyectos() {
   return (
     <div id="Proyectos">
       {projects.length === 0 ? (
-        <h1 className="legend" style={{textAlign:"center"}}>Aun no hay proyectos</h1>
+        <h1 className="legend" style={{ textAlign: "center" }}>No projects yet</h1>
       ) : (
         <>
-          <h1 className="legend">Proyectos</h1>
+          <h1 className="legend">Projects</h1>
           <ul>
             {projects.map(project => (
               <Proyecto 

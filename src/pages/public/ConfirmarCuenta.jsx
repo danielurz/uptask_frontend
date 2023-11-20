@@ -29,7 +29,7 @@ function ConfirmarCuenta() {
 
   if (isValidToken === null) return
   return (
-    isValidToken ? <p>Cuenta Confirmada</p> : <p>Token invalido</p>
+    isValidToken ? <p>Confirmed Account</p> : <p>Invalid Token</p>
   )
 }
 

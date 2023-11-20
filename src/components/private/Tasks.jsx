@@ -37,7 +37,7 @@ function Tasks({projectId,isCreator}) {
         <>
             {tasks.length === 0 ? (
                 <>
-                    <h2 style={{textAlign: "center", marginTop: "50px"}}>Aun no hay tareas</h2>
+                    <h2 style={{textAlign: "center", marginTop: "50px"}}>There are no tasks yet</h2>
                 </>
             ) : (
                 <ul id="Task">

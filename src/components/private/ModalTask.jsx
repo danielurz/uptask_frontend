@@ -15,12 +15,12 @@ function ModalTask() {
         e.preventDefault()
         
         const VALUES = Object.values(task)
-        if (VALUES.includes("") || VALUES.length < 4) return toast.error("Completa todos los campos")
+        if (VALUES.includes("") || VALUES.length < 4) return toast.error("Complete all fields")
 
         if (!task?._id) {
+          const loadingToast = toast.loading("Adding new task...")
+          
           try {
-              const loadingToast = toast.loading("Adding new task...")
-              
               const url = `${import.meta.env.VITE_BACKEND_URL}/api/task/crear/${userData._id}`
               const response = await fetch(url, {
                 method: "POST",
@@ -30,8 +30,6 @@ function ModalTask() {
                 }
               }).then(res => res.json())
               
-              toast.dismiss(loadingToast)
-
               if (response?.error) return toast.error(response.error)
               if (response?.serverError) return toast.error(`Server Error: ${response.serverError}`)
   
@@ -40,15 +38,17 @@ function ModalTask() {
               dispatch(addTask({...task,projectId,_id:response.id}))
               dispatch(resetTask())
   
-          } catch (error) {
+            } catch (error) {
               toast.error(`Client Error: ${error.message}`)
-          }
+            } finally {
+              toast.dismiss(loadingToast)
+            }
         } else {
 
           const {updatedAt,createdAt,projectId,estado,_id, ...updatedTask} = task
 
+          const loadingToast = toast.loading("Editing task...")
             try {
-              const loadingToast = toast.loading("Editing task...")
               
               const url = `${import.meta.env.VITE_BACKEND_URL}/api/task/mutar/${task._id}/${projectId}`
               const response = await fetch(url, {
@@ -59,8 +59,6 @@ function ModalTask() {
                 }
               }).then(data => data.json())
               
-              toast.dismiss(loadingToast)
-
               if (response?.error) return toast.error(response.error)
               if (response?.serverError) return toast.error(`Server Error: ${response.serverError}`)
 
@@ -71,6 +69,8 @@ function ModalTask() {
 
             } catch (error) {
               toast.error(`Client Error: ${error.message}`)
+            } finally {
+              toast.dismiss(loadingToast)
             }
         }
         
@@ -86,31 +86,31 @@ function ModalTask() {
   return (
     <form onSubmit={handleForm} className="modalEditTask">
         <div className="field">
-          <label>Nombre tarea</label>
+          <label>Task Name</label>
           <input type="text" name="tarea" 
             onChange={handleChange} value={task?.tarea ?? ""}/>
         </div>
         <div className="field">
-          <label>Descripcion tarea</label>
+          <label>Task Description</label>
           <textarea name="descripcion" 
             onChange={handleChange} value={task?.descripcion ?? ""}/>
         </div>
         <div className="field">
-          <label>Fecha de entrega</label>
+          <label>Due Date</label>
           <input type="date" name="fecha" 
             onChange={handleChange} value={task?.fecha ?? ""}/>
         </div>
         <div className="field">
-          <label>Prioridad</label>
+          <label>Priority</label>
           <select name="prioridad" 
             onChange={handleChange} value={task?.prioridad ?? ""}>
-            <option value="">-- Selecciona --</option>
-            <option value="Baja">Baja</option>
-            <option value="Media">Media</option>
-            <option value="Alta">Alta</option>
+            <option value="">-- Select --</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
         </div>
-        <input type="submit" value={!task?._id ? "Crear Tarea" : "Editar Tarea"} className="smtBtn" />
+        <input type="submit" value={!task?._id ? "Create Task" : "Edit Task"} className="smtBtn" />
         <FaWindowClose 
             onClick={() => {
               dispatch(resetTask())

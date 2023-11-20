@@ -31,9 +31,9 @@ function App() {
         {/* AREA PUBLICA */}
         <Route path='/' element={<PublicLayout/>}>
           <Route index element={<Login/>} />
-          <Route path='registrar' element={<Registrar/>} />
-          <Route path='olvide-password' element={<OlvidePassword/>} />
-          <Route path='nuevo-password/:token' element={<NuevoPassword/>} />
+          <Route path='register' element={<Registrar/>} />
+          <Route path='forgot-password' element={<OlvidePassword/>} />
+          <Route path='new-password/:token' element={<NuevoPassword/>} />
           <Route path='confirmar-cuenta/:token' element={<ConfirmarCuenta/>} />
         </Route>
         {/* AREA PRIVADA */}

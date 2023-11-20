@@ -48,6 +48,7 @@ function ProyectoView() {
     if (chargingProjects) return 
     if (!thisProject) return <h1>Error: No existe un proyecto con este ID</h1>
     const {proyecto,cliente,descripcion,fecha,_id} = thisProject
+
     return (
         <div id="ProjectView">
             <div className="project">
@@ -56,21 +57,21 @@ function ProyectoView() {
                     {isCreator && (
                         <div className="actions">
                             <button onClick={() => dispatch(editProject(thisProject))}>
-                                <FaPencilAlt/> Editar</button>
+                                <FaPencilAlt/> Edit</button>
                             <button onClick={handleDeleteProject}>
-                                <FaTrash/> Eliminar</button>
+                                <FaTrash/> Delete</button>
                         </div>    
                     )}
                 </div>
                 {isCreator && (
                     <button className="newTask" onClick={() => dispatch(showUpModal(true))}>
                         <FaPlusCircle/> 
-                        <span>Nueva tarea</span>
+                        <span>New task</span>
                     </button>
                 )}
-                <p><span>Cliente: </span>{cliente}</p>
-                <p><span>Fecha de entrega: </span>{formatDate(fecha)}</p>
-                <p><span>Descripcion del proyecto: </span>{descripcion}</p>
+                <p><span>Client: </span>{cliente}</p>
+                <p><span>Delivery date: </span>{formatDate(fecha)}</p>
+                <p><span>Project description: </span>{descripcion}</p>
             </div>
             <Tasks
                 projectId={projectId}

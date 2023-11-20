@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 
 function Proyecto({project}) {
-  const {_id,proyecto,cliente,creadorId} = project
+  const {_id, proyecto, cliente, creadorId} = project
 
   const {userData} = useSelector(state => state.auth)
   const isCreator = creadorId === userData._id
@@ -13,11 +13,11 @@ function Proyecto({project}) {
         <p>{proyecto}</p>
         <p>{cliente}</p>
         {!isCreator && (
-          <legend>colaborador</legend>
+          <legend>collaborator</legend>
         )}
       </div>
       <div className="action">
-        <Link to={`proyecto/${_id}`}>Ver proyecto</Link>
+        <Link to={`proyecto/${_id}`}>View project</Link>
       </div>
     </li>
   )

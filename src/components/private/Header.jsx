@@ -23,8 +23,8 @@ function Header() {
                     <p>UpTask</p>
                 </div>
                 <div className="actions">
-                    <Link to="">Proyectos</Link>
-                    <button onClick={cerrarSesion}>Cerrar Sesion</button>
+                    <Link to="">Projects</Link>
+                    <button onClick={cerrarSesion}>Log out</button>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ function NuevoProyecto() {
 
     const VALUES = Object.values(project)
 
-    if (VALUES.includes("") || VALUES.length < 4) return toast.error("Todos los campos son obligatorios")
+    if (VALUES.includes("") || VALUES.length < 4) return toast.error("All fields are required")
 
     try {
       const loadingToast = toast.loading("Adding project...")
@@ -57,29 +57,29 @@ function NuevoProyecto() {
 
   return (
     <div id="NuevoProyecto">
-      <h1 className="hero">Crear Proyecto</h1>
+      <h1 className="hero">Create Project</h1>
       <form onSubmit={handleForm}>
         <div className="field">
-          <label>Nombre proyecto</label>
+          <label>Project Name</label>
           <input type="text" name="proyecto" onChange={handleChange} 
             value={project?.proyecto ?? ""} />
         </div>
         <div className="field">
-          <label>Descripcion</label>
+          <label>Description</label>
           <textarea name="descripcion" onChange={handleChange} 
             value={project?.descripcion ?? ""} />
         </div>
         <div className="field">
-          <label>Fecha entrega</label>
+          <label>Due Date</label>
           <input type="date" name="fecha" onChange={handleChange} 
             value={project?.fecha ?? ""} />
         </div>
         <div className="field">
-          <label>Nombre cliente</label>
+          <label>Client Name</label>
           <input type="text" name="cliente" onChange={handleChange} 
             value={project?.cliente ?? ""} />
         </div>
-        <input type="submit" value="Crear proyecto" className="smtBtn" />
+        <input type="submit" value="Create Project" className="smtBtn" />
       </form>
     </div>
   )

@@ -11,7 +11,7 @@ function OlvidePassword() {
 
     const email = formdata.get("email")
 
-    if (email === "") return toast.error("Completa el campo")
+    if (email === "") return toast.error("Complete the field")
 
     try {
       const url = `${import.meta.VITE_BACKEND_URL}/api/user/reset-password`
@@ -23,8 +23,8 @@ function OlvidePassword() {
         }
       }).then(res => res.json())
 
-      if (response.error) return toast.error(response.error)
-      if (response.serverError) return toast.error(`Server Error: ${response.serverError}`)
+      if (response?.error) return toast.error(response.error)
+      if (response?.serverError) return toast.error(`Server Error: ${response.serverError}`)
 
       toast.success(response.success)
       form.reset()
@@ -37,18 +37,18 @@ function OlvidePassword() {
   return (
     <div id="OlvidePassword">
       <div className="hero">
-        <p><span>recupera el acceso </span>a tu cuenta</p>
+        <p><span>recover access </span>to your account</p>
       </div>
         <form onSubmit={handleForm}>
           <div className="field">
             <label>Email</label>
-            <input type="text" name="email" placeholder="Email de registro" />
+            <input type="text" name="email" placeholder="Registered Email" />
           </div>
-          <input type="submit" value="ENVIAR INSTRUCCIONES" className="smtBtn" />
+          <input type="submit" value="SEND INSTRUCTIONS" className="smtBtn" />
         </form>
         <nav>
-          <Link to="/">Ya tienes cuenta? Inicia sesion</Link>
-          <Link to="/registrar">No tienes cuenta? Registrate</Link>
+          <Link to="/">Already have an account? Log in</Link>
+          <Link to="/register">Don't have an account? Register</Link>
         </nav>
     </div>
   )

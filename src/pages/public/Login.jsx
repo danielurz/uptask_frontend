@@ -16,11 +16,11 @@ function Login() {
     const email = formdata.get("email")
     const password = formdata.get("password")
 
-    if ([email,password].includes("")) return toast.error("Todos los campos son obligatorios")
+    if ([email,password].includes("")) return toast.error("All fields are required")
 
+    const loadingToast = toast.loading("Logging in...")
+    
     try {
-      const loadingToast = toast.loading("Logging in...")
-
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/login`
       const response = await fetch(url, {
         method: "POST",
@@ -29,8 +29,6 @@ function Login() {
           "Content-Type": "application/json"
         }
       }).then(res => res.json())
-
-      toast.dismiss(loadingToast)
 
       if (response?.error) return toast.error(response.error);
       if (response?.serverError) return toast.error(response.serverError);
@@ -42,27 +40,30 @@ function Login() {
     } catch (error) {
       toast.error(`Client Error: ${error.message}`)
     }
+    finally {
+      toast.dismiss(loadingToast)
+    }
   }
 
   return (
     <div id="Login">
       <div className="hero">
-        <p><span>inicia sesion y administra tus </span>proyectos</p>
+        <p><span>log in and manage your </span>projects</p>
       </div>
         <form onSubmit={handleForm}>
           <div className="field">
             <label>Email</label>
-            <input type="text" name="email" placeholder="Email de registro" />
+            <input type="text" name="email" placeholder="Registration Email" />
           </div>
           <div className="field">
-            <label>PASSWORD</label>
-            <input type="password" name="password" placeholder="Password de registro" />
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Registration Password" />
           </div>
-          <input type="submit" value="INICIAR SESION" className="smtBtn" />
+          <input type="submit" value="LOG IN" className="smtBtn" />
         </form>
         <nav>
-          <Link to="/registrar">No tienes cuenta? Registrate</Link>
-          <Link to="/olvide-password">Olvide mi password</Link> 
+          <Link to="/register">Don't have an account? Register</Link>
+          <Link to="/forgot-password">Forgot my password</Link> 
         </nav>
     </div>
   )

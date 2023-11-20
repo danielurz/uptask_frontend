@@ -9,10 +9,10 @@ function Sidebar() {
     <div id="Sidebar">
         <div className="container">
             <div className="greeting">
-                <p>Hola {userData.nombre}</p>
+                <p>Hello {userData.nombre}</p>
             </div>
             <div className="action">
-                <Link to="nuevo-proyecto">Nuevo proyecto</Link>
+                <Link to="nuevo-proyecto">New project</Link>
             </div>
         </div>
     </div>

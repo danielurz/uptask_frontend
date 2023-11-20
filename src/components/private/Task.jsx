@@ -37,14 +37,12 @@ function Task({task,projectId,isCreator}) {
         const confirmation = confirm("Desea eliminar esta tarea?")
         if (!confirmation) return
 
+        const loadingToast = toast.loading("deleting task...")
         try {
-            const loadingToast = toast.loading("deleting task...")
             
             const url = `${import.meta.env.VITE_BACKEND_URL}/api/task/mutar/${task._id}/${projectId}/${userData._id}`
             const response = await fetch(url,{method:"DELETE"}).then(data => data.json())
             
-            toast.dismiss(loadingToast)
-
             if (response?.error) return toast.error(response.error)
             if (response?.serverError) return toast.error(`Server Error: ${response.serverError}`)
 
@@ -53,6 +51,8 @@ function Task({task,projectId,isCreator}) {
 
         } catch (error) {
             toast.error(`Client Error: ${error.message}`)
+        } finally {
+            toast.dismiss(loadingToast)
         }
     }
 
@@ -62,20 +62,20 @@ function Task({task,projectId,isCreator}) {
             <p className="bold">{tarea}</p>    
             <p className="light">{descripcion}</p>    
             <p className="bold">{formatDate(fecha)}</p>
-            <p className="light">Prioridad: {prioridad}</p>
+            <p className="light">Priority: {prioridad}</p>
         </div>    
         <div className="actions">
             <button 
                 className={estado ? "completa" : "incompleta"} onClick={handleComplete}>
-                {estado ? "Completa" : "Incompleta"}</button>
+                {estado ? "Complete" : "Incomplete"}</button>
             {isCreator && (
                 <>
                     <button 
                         className="edit" onClick={handleEdit}>
-                        Editar</button>
+                        Edit</button>
                     <button 
                         className="delete" onClick={handleDelete}
-                        >Eliminar</button>
+                        >Delete</button>
                 </>
             )}
         </div>
