@@ -105,9 +105,9 @@ function ModalTask() {
           <select name="prioridad" 
             onChange={handleChange} value={task?.prioridad ?? ""}>
             <option value="">-- Select --</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
+            <option value="Baja">Low</option>
+            <option value="Media">Medium</option>
+            <option value="Alta">High</option>
           </select>
         </div>
         <input type="submit" value={!task?._id ? "Create Task" : "Edit Task"} className="smtBtn" />
