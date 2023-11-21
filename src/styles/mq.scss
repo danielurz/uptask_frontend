@@ -1,4 +1,7 @@
 // Responsive Media Queries for public panel
+
+$bgc: #e5e4e8;
+
 @media (max-width: 768px) {
     #Login, #Registro, #OlvidePassword, #NuevoPassword {
         width: 90%;
@@ -7,6 +10,8 @@
         }
     }
 }
+
+
 
 @media (max-width: 600px) {
     #Login, #Registro, #OlvidePassword, #NuevoPassword {
@@ -22,6 +27,8 @@
         }
     }
 }
+
+
 
 @media (max-width: 480px) {
     #Login, #Registro, #OlvidePassword, #NuevoPassword {
@@ -47,7 +54,10 @@
 }
 
 
+
 // Responsive Media Queries for private panel
+
+
 
 @media (max-width: 1024px) {
     #Main {
@@ -68,6 +78,8 @@
         }
     }
 }
+
+
 
 @media (max-width: 700px) {
     #NuevoProyecto {
@@ -133,6 +145,8 @@
     }
 }
 
+
+
 @media (max-width: 460px) {
     #Proyectos {
         .proyecto {
@@ -161,7 +175,17 @@
     }
 
     #Tasks {
+        background-color: $bgc;
+        box-shadow: none;
+        border-radius: 0;
         .task {
+            background-color: #fff;
+            box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border-bottom: none;
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
             .info {
                 margin-bottom: 20px;
             }
@@ -175,6 +199,8 @@
         width: 95%;
     }
 }
+
+
 
 @media (max-width: 380px) {
     #CollabBox {
