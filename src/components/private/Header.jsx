@@ -32,6 +32,8 @@ function Header() {
                 setIsMenuChecked(false);
             }
         };
+
+        handleResize()
         
         window.addEventListener("resize", handleResize);
     
