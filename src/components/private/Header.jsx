@@ -2,13 +2,20 @@ import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { resetProjects } from "../../redux/fautures/project.slice.js"
 import { resetUserData } from "../../redux/fautures/auth.slice.js"
-import { HiMenu  } from "react-icons/hi";
+import { HiMenu } from "react-icons/hi";
 import { useEffect, useState } from "react";
 
 function Header() {
 
     const dispatch = useDispatch()
-    const [isMenuChecked, setIsMenuChecked] = useState(true)
+    const [isMenuChecked, setIsMenuChecked] = useState(false)
+
+    const hideRouting = e => {
+        if (e.target.tagName === "A" || e.target.tagName === "BUTTON") {
+            setIsMenuChecked(false)
+        }
+    }
+
 
     const cerrarSesion = () => {
         localStorage.removeItem("token")
@@ -44,6 +51,7 @@ function Header() {
                 </div>
                 <HiMenu className="menuIcon" onClick={() => setIsMenuChecked(!isMenuChecked)}/>
                 <div className="actions" 
+                onClick={hideRouting}
                 style={isMenuChecked ? {display: "flex"} : {display: "none"}}>
                     <Link to="">Projects</Link>
                     <button onClick={cerrarSesion}>Log out</button>
