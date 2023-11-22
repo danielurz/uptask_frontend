@@ -11,7 +11,7 @@ function Header() {
     const [isMenuChecked, setIsMenuChecked] = useState(false)
 
     const hideRouting = e => {
-        if (e.target.tagName === "A" || e.target.tagName === "BUTTON") {
+        if ((e.target.tagName === "A" || e.target.tagName === "BUTTON") && window.innerWidth < 380) {
             setIsMenuChecked(false)
         }
     }
