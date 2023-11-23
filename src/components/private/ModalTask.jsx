@@ -90,7 +90,7 @@ function ModalTask() {
           <input type="text" name="tarea" 
             onChange={handleChange} value={task?.tarea ?? ""}/>
         </div>
-        <div className="field">
+        <div className="field"> 
           <label>Task Description</label>
           <textarea name="descripcion" 
             onChange={handleChange} value={task?.descripcion ?? ""}/>
